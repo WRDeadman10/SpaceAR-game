@@ -7,6 +7,7 @@ public class Shooting : MonoBehaviour
 
     private RaycastHit hit;
     private DeclarationManager DM;
+    private bool Toggle;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,11 +17,20 @@ public class Shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !Toggle)
         {
             // Perform Muzzle Flash
             DORayCast();
         }
+        if (Toggle)
+        {
+            DORayCast();
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            Toggle = !Toggle;
+        }
+
     }
 
     void DORayCast()
